@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
                         TextFormField(
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
-                              labelText: 'Usuario ou E-mail'),
+                              labelText: 'E-mail'),
                           validator: (value) {
                             if (value.isEmpty) {
                               return 'Insira o E-mail';
@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
                           child: RaisedButton(
                             color: Colors.blue,
                             onPressed: () {
-                              Navigator.pop(context);
+                              
                               return Navigator.of(context)
                                   .pushNamed('/homePage');
                             },

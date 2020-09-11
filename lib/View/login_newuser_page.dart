@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 
 class LoginNewUserPage extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           title: Text("Cadastrar Novo Usuário"),
         ),
         body: Container(
-          child: Center(
+          width: size.width,
+          height: size.height,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
@@ -42,11 +47,13 @@ class LoginNewUserPage extends StatelessWidget {
                       border: OutlineInputBorder(),
                       labelText: 'Senha',
                     ),
+                    
                     autovalidate: true,
+                  
 
                     validator: (value) {
                     
-                      if (value.isEmpty) {
+                      if (value.isEmpty && value != null) {
                         return 'Insira sua Senha';
                       }
                       return null;

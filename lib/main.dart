@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:proj_boticario/View/home_page_post.dart';
+import 'package:proj_boticario/View/list_lastest_page.dart';
 import 'package:proj_boticario/View/login_newuser_page.dart';
 import 'Components/introscreen.dart';
 
@@ -21,8 +23,9 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Splash Screen',),
 
       routes: <String, WidgetBuilder> {
-      '/homePage'     : (BuildContext context) => null,
+      '/homePage'     : (BuildContext context) => HomePagePost(),
       '/loginNewUserPage' : (BuildContext context) => new LoginNewUserPage(),
+      '/listLastestPage' : (BuildContext context) => new ListLastestPage(),
 
 
      
