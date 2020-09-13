@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as Http;
 import 'package:mobx/mobx.dart';
 import 'package:proj_boticario/Model/lastest_news_model.dart';
 import 'package:proj_boticario/constants.dart';
-
 part 'list_lastest_controller.g.dart';
 
 class ListLastestController = _ListLastestController
@@ -22,6 +20,10 @@ abstract class _ListLastestController with Store {
       LastestNews lastestn = new LastestNews.fromJson(decodeJson);
       return lastestn.news;
     }
-    return null;
+    else 
+    {
+      print('A Requisição falhou status: ${response.statusCode}');
+      return null;
+    }
   }
 }

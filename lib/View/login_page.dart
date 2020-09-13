@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:proj_boticario/Validators/bloc.dart';
 import '../icons_social_icons.dart' as CustomIcon;
 
 class LoginPage extends StatelessWidget {
+  final bloc = new Bloc();
+
+  changeThePage(BuildContext context){
+    Navigator.of(context).pushNamed('/homePage');
+
+  }
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,47 +42,49 @@ class LoginPage extends StatelessWidget {
                     ),
                     child: Column(
                       children: <Widget>[
-                        TextFormField(
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'E-mail'),
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Insira o E-mail';
-                            }
-                            return null;
-                          },
+                        StreamBuilder<String>(
+                          stream: bloc.email,
+                          builder: (context, snapshot) => TextFormField(
+                            onChanged: (s) => bloc.emailChanged.add(s),
+                            decoration: InputDecoration(
+                                errorText: snapshot.error,
+                                border: OutlineInputBorder(),
+                                labelText: 'E-mail'),
+                                keyboardType: TextInputType.emailAddress ,
+                          ),
                         ),
                         Padding(padding: EdgeInsets.symmetric(vertical: 7)),
-                        TextFormField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Senha',
+                        
+                        
+                        
+                        StreamBuilder<String>(
+                          stream: bloc.password,
+                          builder: (context, snapshot) => TextFormField(
+                            onChanged:(s) => bloc.passwordChanged.add(s),
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Senha',
+                              errorText: snapshot.error
+                            ),
+
                           ),
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Insira sua Senha';
-                            }
-                            return null;
-                          },
                         ),
                         Padding(padding: EdgeInsets.symmetric(vertical: 20)),
-                        SizedBox(
-                          width: double.infinity,
-                          height: 50,
-                          child: RaisedButton(
-                            color: Colors.blue,
-                            onPressed: () {
-                              
-                              return Navigator.of(context)
-                                  .pushNamed('/homePage');
-                            },
-                            textColor: Colors.white,
-                            child: Text(
-                              'Entrar',
-                              style: TextStyle(
-                                fontSize: 20,
+                        StreamBuilder<bool>(
+                            stream: bloc.submitCheck,
+                            builder: (context, snapshot) => SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              color: Colors.blue,
+                              onPressed: snapshot.hasData ? () => changeThePage(context) : null,
+                              textColor: Colors.white,
+                              child: Text(
+                                'Entrar',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
                               ),
                             ),
                           ),

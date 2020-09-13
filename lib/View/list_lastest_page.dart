@@ -36,13 +36,19 @@ class _ListLastestPageState extends State<ListLastestPage> {
                   ? new ListView.builder(
                       itemCount: itens.length,
                       itemBuilder: (BuildContext context, int index) {
-                        News user = itens[index];
-                        return TimeLine(user: user);
+                        News user = itens[(itens.length - 1) - index];
+                        return TimeLine(
+                          name: user.user.name,
+                          content: user.message.content,
+                          profilePicture: user.user.profilePicture,
+                          createdAt: user.message.createdAt,
+                    
+                          gestureDetector: false,
+                        
+                        );
                       },
                     )
-                  : Center(
-                      child: CircularProgressIndicator(),
-                    );
+                  : Center(child: CircularProgressIndicator(),);
             },
           ),
         ));

@@ -1,7 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:proj_boticario/Validators/bloc.dart';
 
 class LoginNewUserPage extends StatelessWidget {
-  
+  final bloc = new Bloc();
+  meuAlerta(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.accessibility_new),
+                Text("Alerta"),
+              ],
+            ),
+            Divider(
+              color: Colors.black,
+            )
+          ],
+        ),
+        content: Text("Usuário cadastrado com sucesso"),
+        actions: <Widget>[
+          FlatButton(
+              onPressed: () => Navigator.of(context).pop(), child: Text("OK"))
+        ],
+        elevation: 24,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -13,66 +41,63 @@ class LoginNewUserPage extends StatelessWidget {
         body: Container(
           width: size.width,
           height: size.height,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  TextFormField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(), labelText: 'Nome'),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Insira o Nome';
-                      }
-                      return null;
-                    },
-                  ),
-                  Padding(padding: EdgeInsets.symmetric(vertical: 7)),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(), labelText: 'E-mail'),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Insira o E-mail';
-                      }
-                      return null;
-                    },
-                  ),
-                  Padding(padding: EdgeInsets.symmetric(vertical: 7)),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Senha',
+                  StreamBuilder(
+                    stream: bloc.name,
+                    builder: (context, snapshot) => TextFormField(
+                      onChanged: (s) => bloc.nameChanged.add(s),
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          errorText: snapshot.error,
+                          labelText: 'Nome'),
                     ),
-                    
-                    autovalidate: true,
-                  
-
-                    validator: (value) {
-                    
-                      if (value.isEmpty && value != null) {
-                        return 'Insira sua Senha';
-                      }
-                      return null;
-                    },
+                  ),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 7)),
+                  StreamBuilder(
+                    stream: bloc.email,
+                    builder: (context, snapshot) => TextFormField(
+                      onChanged: (s) => bloc.emailChanged.add(s),
+                      decoration: InputDecoration(
+                          errorText: snapshot.error,
+                          border: OutlineInputBorder(),
+                          labelText: 'E-mail'),
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 7)),
+                  StreamBuilder(
+                    stream: bloc.password,
+                    builder: (context, snapshot) => TextFormField(
+                      onChanged: (value) => bloc.passwordChanged.add(value),
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        errorText: snapshot.error,
+                        border: OutlineInputBorder(),
+                        labelText: 'Senha',
+                      ),
+                    ),
                   ),
                   Padding(padding: EdgeInsets.symmetric(vertical: 20)),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: RaisedButton(
-                      color: Colors.blue,
-                      onPressed: () {
-                        print("Cadastrado");
-                      },
-                      textColor: Colors.white,
-                      child: Text(
-                        'Cadastrar',
-                        style: TextStyle(
-                          fontSize: 20,
+                  StreamBuilder(
+                    stream: bloc.submitCheckAdd,
+                    builder: (context, snapshot) => SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: RaisedButton(
+                        color: Colors.blue,
+                        onPressed:
+                            snapshot.hasData ? () => meuAlerta(context) : null,
+                        textColor: Colors.white,
+                        child: Text(
+                          'Cadastrar',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
