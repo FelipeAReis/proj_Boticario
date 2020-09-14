@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:proj_boticario/Validators/bloc.dart';
 import '../icons_social_icons.dart' as CustomIcon;
 
@@ -6,13 +7,17 @@ class LoginPage extends StatelessWidget {
   final bloc = new Bloc();
 
   changeThePage(BuildContext context){
+    Navigator.of(context).pop();
     Navigator.of(context).pushNamed('/homePage');
-
   }
   
-
   @override
   Widget build(BuildContext context) {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown]);
+
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
@@ -24,9 +29,6 @@ class LoginPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(
-                  height: 20,
-                ),
                 Container(
                   width: 160,
                   height: 100,
@@ -94,8 +96,11 @@ class LoginPage extends StatelessWidget {
                           width: double.infinity,
                           height: 50,
                           child: RaisedButton(
-                            color: Colors.grey,
+                            color: Colors.green,
                             onPressed: () {
+
+                              
+
                               return Navigator.of(context)
                                   .pushNamed('/loginNewUserPage');
                             },

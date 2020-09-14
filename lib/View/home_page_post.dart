@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:proj_boticario/Components/drawer.dart';
@@ -23,6 +24,9 @@ class _HomePagePostState extends State<HomePagePost> {
 
   @override
   Widget build(BuildContext context) {
+      SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown]);
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -39,16 +43,11 @@ class _HomePagePostState extends State<HomePagePost> {
           height: size.height,
           color: Colors.white,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              StackMenuTop(
-                size: size,
-                list: lista,
-              ),
+             children: <Widget>[
+              StackMenuTop(size: size,list: lista),
               Container(
                   width: double.infinity,
-                  height: size.height - 200,
+                  height: size.height - 195,
                   color: Colors.transparent,
                   child: Observer(builder: (_) {
                     return ListView.builder(

@@ -20,14 +20,14 @@ class AlertDialogEditPost extends StatelessWidget {
    (tipo == true) ? myTextController.text = list.list[index]["message"]["content"] : myTextController.text;
 
     return AlertDialog(
+      
       title: Row(
         children: <Widget>[
           Icon(
             Icons.textsms,
             color: Colors.deepPurple,
           ),
-          Text(
-            "Cadastrar Nova Postagem",
+          Text((tipo == true) ? "Editar Postagem": "Cadastrar Nova Postagem" ,
             style: TextStyle(color: Colors.deepPurple),
           ),
         ],

@@ -22,7 +22,7 @@ class StackMenuTop extends StatelessWidget {
       children: <Widget>[
         Container(
           width: size.width,
-          height: 120,
+          height: 100,
           decoration: BoxDecoration(
               color: Colors.deepPurple,
               borderRadius: BorderRadius.only(
@@ -34,8 +34,8 @@ class StackMenuTop extends StatelessWidget {
           children: <Widget>[
             Container(
               alignment: Alignment.bottomLeft,
-              width: size.width * 0.45,
-              height: 120,
+              width: size.width / 3,
+              height: 100,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/people.png"),
@@ -48,19 +48,19 @@ class StackMenuTop extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  width: 150,
+                  width: 160,
                   child: FlatButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side: BorderSide(color: Colors.white)),
                       color: Colors.transparent,
                       textColor: Colors.white,
-                      child: Text("Últimas Novidades"),
+                      child: Text("Novidades"),
                       onPressed: () => Navigator.of(context)
                           .pushNamed('/listLastestPage')),
                 ),
                 SizedBox(
-                  width: 150,
+                  width: 160,
                   child: FlatButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
