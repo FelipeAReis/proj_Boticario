@@ -56,7 +56,7 @@ class TimeLine extends StatelessWidget {
                           radius: 18,
                           backgroundImage: AdvancedNetworkImage(
                             profilePicture,
-                            timeoutDuration: Duration(seconds: 2),
+                            timeoutDuration: Duration(seconds: 3),
                             fallbackAssetImage: "assets/images/logo_color.png",
                             retryLimit: 0,
                           ),
@@ -148,7 +148,7 @@ class TimeLine extends StatelessWidget {
                   Container(
                     alignment: Alignment.bottomRight,
                     decoration: BoxDecoration(
-                        color: Colors.deepPurple,
+                        color: Colors.indigo,
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(5),
                             bottomRight: Radius.circular(5))),
@@ -174,7 +174,7 @@ class TimeLine extends StatelessWidget {
           child: new Container(
             height: double.infinity,
             width: 1.0,
-            color: Colors.deepPurple,
+            color: Colors.indigo,
           ),
         ),
         new Positioned(
@@ -193,7 +193,7 @@ class TimeLine extends StatelessWidget {
               width: 30.0,
               decoration: new BoxDecoration(
                   shape: BoxShape.circle, color: Colors.grey[200]),
-              child: Icon(Icons.access_time, color: Colors.deepPurple),
+              child: Icon(Icons.access_time, color: Colors.indigo),
             ),
           ),
         )

@@ -3,7 +3,7 @@ import 'dart:async';
 mixin Validators {
   var emailValidator =
       StreamTransformer<String, String>.fromHandlers(handleData: (email, sink) {
-    if (email.contains("@")) {
+    if (email.contains("@") && email.length > 4 && !email.startsWith('@') && email.contains('.') )  {
       sink.add(email);
     } else {
       sink.addError("Email não é válido");

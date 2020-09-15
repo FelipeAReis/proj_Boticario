@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-//import 'package:proj_boticario/View/login_page.dart';
-import 'package:proj_boticario/View/login_page_copy.dart';
+import 'package:proj_boticario/View/login_page.dart';
+
+
 import 'package:splashscreen/splashscreen.dart';
 
 Widget introScreen(Size size) {
@@ -15,11 +16,13 @@ Widget introScreen(Size size) {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Color(0xffbaaacd),
-              Color(0xff30106b),
+              Color.fromRGBO(111, 117, 226, 1),
+              Color.fromRGBO(141, 156, 199, 1),
+              //Color(0xffc6adf1),
+             // Color(0xff003fcd),              
             ],
           ),
-          navigateAfterSeconds: LoginPageOther(),
+          navigateAfterSeconds: LoginPage(),
           loaderColor: Colors.transparent,
         ),
         Container(

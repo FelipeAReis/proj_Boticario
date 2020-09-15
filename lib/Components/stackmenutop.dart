@@ -24,7 +24,7 @@ class StackMenuTop extends StatelessWidget {
           width: size.width,
           height: 100,
           decoration: BoxDecoration(
-              color: Colors.deepPurple,
+              color: Colors.indigo,
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(40),
                   bottomRight: Radius.circular(40))),

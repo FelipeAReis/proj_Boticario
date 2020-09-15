@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:proj_boticario/View/home_page_post.dart';
 import 'package:proj_boticario/View/list_lastest_page.dart';
 import 'package:proj_boticario/View/login_newuser_page.dart';
+import 'package:proj_boticario/View/login_page.dart';
 import 'Components/introscreen.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -17,24 +17,21 @@ class MyApp extends StatelessWidget {
       title: 'Boticario App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-
+        primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:  MyHomePage(title: 'Splash Screen',),
-
-      routes: <String, WidgetBuilder> {
-      '/homePage'     : (BuildContext context) => HomePagePost(),
-      '/loginNewUserPage' : (BuildContext context) => new LoginNewUserPage(),
-      '/listLastestPage' : (BuildContext context) => new ListLastestPage(),
-
-
-     
-    },
+      home: MyHomePage(
+        title: 'Splash Screen',
+      ),
+      routes: <String, WidgetBuilder>{
+        '/homePage': (BuildContext context) => HomePagePost(),
+        '/loginPage' : (BuildContext context) => LoginPage(),
+        '/loginNewUserPage': (BuildContext context) => new LoginNewUserPage(),
+        '/listLastestPage': (BuildContext context) => new ListLastestPage(),
+      },
     );
   }
 }
-
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -45,13 +42,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    
+
     return introScreen(size);
   }
 }
-
-

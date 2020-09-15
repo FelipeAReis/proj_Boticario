@@ -36,6 +36,7 @@ abstract class _HomePagePostControllerBase with Store {
     if (list.isEmpty) {
       var jsonString = await rootBundle.loadString('assets/data/data.json');
       list = json.decode(jsonString);
+      
     }
   }
 
@@ -47,7 +48,7 @@ abstract class _HomePagePostControllerBase with Store {
   }
 
   @action
-  addPost(String text) async {
+ addPost(String text) async {
     Map<String, dynamic> novoPost = {};
 
     int id = list[list.length - 1]["user"]["post_id"] + 1;
@@ -59,6 +60,8 @@ abstract class _HomePagePostControllerBase with Store {
 
     list.add(novoPost);
     list = list;
+
+    return "ok";
   }
 
   @action
@@ -80,4 +83,7 @@ abstract class _HomePagePostControllerBase with Store {
     list[idPost] = editPost;
     list = list;
   }
+
+
+
 }

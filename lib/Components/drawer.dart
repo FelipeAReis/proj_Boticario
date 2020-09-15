@@ -86,7 +86,12 @@ class _NovoDrawerState extends State<NovoDrawer> {
           ListTile(
             title: Text('Sair'),
             trailing: new Icon(Icons.exit_to_app),
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () {
+            Navigator.of(context).pushReplacementNamed('/loginPage');
+           
+            
+
+            } 
           ),
           
         ],

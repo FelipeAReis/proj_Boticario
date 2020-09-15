@@ -25,10 +25,10 @@ class AlertDialogEditPost extends StatelessWidget {
         children: <Widget>[
           Icon(
             Icons.textsms,
-            color: Colors.deepPurple,
+            color: Colors.indigo,
           ),
           Text((tipo == true) ? "Editar Postagem": "Cadastrar Nova Postagem" ,
-            style: TextStyle(color: Colors.deepPurple),
+            style: TextStyle(color: Colors.indigo),
           ),
         ],
       ),
@@ -51,22 +51,22 @@ class AlertDialogEditPost extends StatelessWidget {
             child: Text("Cancelar")),
         (tipo == false)
             ? FlatButton(
-                focusColor: Colors.deepPurple,
+                focusColor: Colors.indigo,
                 autofocus: true,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.deepPurple)),
+                    side: BorderSide(color: Colors.indigo)),
                 onPressed: () {
                   list.addPost(myTextController.text);
                   Navigator.of(context).pop();
                 },
                 child: Text("Postar"))
             : FlatButton(
-                focusColor: Colors.deepPurple,
+                focusColor: Colors.indigo,
                 autofocus: true,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.deepPurple)),
+                    side: BorderSide(color: Colors.indigo)),
                 onPressed: () {
                   list.editPost(index, myTextController.text);
                   Navigator.of(context).pop();

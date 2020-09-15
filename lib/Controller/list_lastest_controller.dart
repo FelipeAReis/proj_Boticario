@@ -9,6 +9,9 @@ class ListLastestController = _ListLastestController
     with _$ListLastestController;
 
 abstract class _ListLastestController with Store {
+  
+  
+  
   Future<List<News>> getList() async {
     var uri = endPoint;
     Http.Response response = await Http.get(
